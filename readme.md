@@ -30,5 +30,7 @@ Este projeto está sob a licença MIT. Consulte o arquivo [`LICENSE`](./LICENCE)
 
 ## Créditos
 Este projeto foi criado com vídeos do canal do [Jefferson Navarausckas - Nerd dos Dados](https://www.youtube.com/@nerddosdados)
+
 [Como obter a PREVISÃO DO TEMPO com Python](https://www.youtube.com/watch?v=A6Nv3oY5lYc)
+
 [Como criar um ChatBot inteligente com Python estilo ChatGPT](https://www.youtube.com/watch?v=UvaUdZBLo9Y)
