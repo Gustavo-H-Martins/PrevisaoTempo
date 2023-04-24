@@ -6,8 +6,7 @@ from requests import get
 # chave da api para consulta
 API_KEY = "21c151cef324aa5da381fddbb22e397c"
 
-def processar_resposta(resposta, nome, localidade):
-    get_temperatura(local = localidade)
+def processar_resposta(resposta, nome):
     if resposta == '1':
         print(f'{os.linesep}{nome} Este é o link do meu GitHub:https://github.com/Gustavo-H-Martins{os.linesep}')
     elif resposta == '2':
@@ -38,9 +37,10 @@ def start():
 
     # Pedir o nome
     nome = input(f'Por gentileza, digite seu nome: ')
-    localidade = input(f'Por favor informe a sua localidade atual, só o nome da cidade mesmo :D')
+    localidade = input(f'Por favor informe a sua localidade atual, só o nome da cidade mesmo :D ')
     # Oferecer um menu de opções
     contador = 0
+    get_temperatura(local = localidade, usuario=nome)
     print("O que gostaria de saber hoje? ")
     while True:
         
@@ -51,10 +51,10 @@ def start():
                 {os.linesep}[1] - Como acesso o seu Github? 
                 {os.linesep}[2] - Como acesso o seu LinkedIn? 
                 {os.linesep}[3] - Como entro em contato com você?
-        - """)
+                """)
             
             # Processar a resposta enviada
-            processar_resposta(resposta, nome, localidade)
+            processar_resposta(resposta, nome)
         else :
             continuar = input(f"""Gostaria de continuar esta conversa por aqui? 
             {os.linesep}[1] - Sim
@@ -74,7 +74,7 @@ def start():
 
         contador += 1 
 
-def get_temperatura(latitude:str = '', longitude:str = '', local:str=''):
+def get_temperatura(latitude:str = '', longitude:str = '', local:str='', usuario:str=''):
     link = f'https://api.openweathermap.org/data/2.5/weather?'#lat={lat}&lon={lon}&appid={API_KEY}&lang=pt_br'
     params = {
         'lat' : latitude,
@@ -107,6 +107,7 @@ def get_temperatura(latitude:str = '', longitude:str = '', local:str=''):
         # Apenas arredondando a temperatura
         # Inserindo o simbolo de ºC
         print (f"""
+        {os.linesep}Olá {usuario}
         {os.linesep}O tempo em {requisicao_dic['name']} é : {descricao} 
         {os.linesep}Temperatura de {round(temperatura,2)}ºC 
         {os.linesep}Máxima de {round(temp_max,2)}ºC, Mínima de {round(temp_min,2)}ºC
